@@ -1,4 +1,5 @@
 import React from "react";
+import { Loading } from "./Loading";
 
 // Las clases funcionan con prototipos
 class ClassState extends React.Component {
@@ -12,16 +13,26 @@ class ClassState extends React.Component {
 
   // métodos del ciclo de vida
   //componentWillMount
-  UNSAFE_componentWillMount() {
+  /* UNSAFE_componentWillMount() {
     console.log("componentWillMount");
   }
 
   componentDidMount() {
     console.log("componentDidMount");
-  }
+  } */
 
-  componentWillUnmount() {
-    console.log("componentWillUnmount");
+  componentDidUpdate() {
+    console.log("actualización");
+
+    if (!!this.state.loading) {
+      setTimeout(() => {
+        console.log("Haciendo la validación");
+
+        this.setState({ loading: false });
+
+        console.log("Terminando la validación");
+      }, 3000);
+    }
   }
 
   render() {
@@ -30,7 +41,7 @@ class ClassState extends React.Component {
         <h2>Eliminar {this.props.name}</h2>
         <p>Por favor escribe el código de seguridad</p>
         {this.state.error && <p>Error: El codigo es incorrecto</p>}
-        {this.state.loading && <p>Cargando...</p>}
+        {this.state.loading && <Loading />}
         <input placeholder="Código de seguridad" />
         {/* this.setState((prevState) => ({ error: !prevState }))}
         > */}
