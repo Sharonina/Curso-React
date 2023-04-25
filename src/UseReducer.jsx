@@ -5,13 +5,6 @@ function UseReducer({ name }) {
 
   const SECURITY_CODE = "paradigma";
 
-  /* const onWrite = (newValue) => {
-    setState({
-      ...state,
-      value: newValue,
-    });
-  }; */
-
   React.useEffect(() => {
     console.log("Iniciando el efecto");
 
